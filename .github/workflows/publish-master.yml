@@ -1,0 +1,50 @@
+name: publish-master
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+  
+    name: npm-publish
+    runs-on: ubuntu-latest
+    
+    permissions: 
+      contents: read
+      packages: write 
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    
+    - name: Setup node
+      uses: actions/setup-dotnet@v1.9.0
+      with:
+        dotnet-version: 6.0.100
+        # Authenticates packages to push to GPR
+        source-url: https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json
+      env:
+        NUGET_AUTH_TOKEN: '%NUGET_AUTH_TOKEN%'
+
+    - name: Install dependencies
+      run: dotnet restore
+      env:
+        NUGET_AUTH_TOKEN: ${{ github.token }}
+    
+    - name: Build
+      run: dotnet build --configuration Release --no-restore
+
+    - name: Test
+      run: dotnet test
+
+    - name: Pack
+      run: dotnet pack --no-build --configuration Release
+
+    - name: PushNuget
+      run: dotnet nuget push **/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.PUBLISH_TO_NUGET_ORG }} --skip-duplicate
+
+    - name: PushGithub
+      run: dotnet nuget push **/*.nupkg --no-symbols --skip-duplicate
+      env:
+        NUGET_AUTH_TOKEN: ${{ github.token }}
