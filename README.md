@@ -1,8 +1,7 @@
 # MintPlayer.AspNetCore.ChangePassword
 [![NuGet Version](https://img.shields.io/nuget/v/MintPlayer.AspNetCore.ChangePassword.svg?style=flat)](https://www.nuget.org/packages/MintPlayer.AspNetCore.ChangePassword)
 [![NuGet](https://img.shields.io/nuget/dt/MintPlayer.AspNetCore.ChangePassword.svg?style=flat)](https://www.nuget.org/packages/MintPlayer.AspNetCore.ChangePassword)
-[![Build Status](https://travis-ci.org/MintPlayer/MintPlayer.AspNetCore.ChangePassword.svg?branch=master)](https://travis-ci.org/MintPlayer/MintPlayer.AspNetCore.ChangePassword)
-![.NET Core](https://github.com/MintPlayer/MintPlayer.AspNetCore.ChangePassword/workflows/.NET%20Core/badge.svg)
+[![.NET Core](https://github.com/MintPlayer/MintPlayer.AspNetCore.ChangePassword/actions/workflows/publish-master.yml/badge.svg)](https://github.com/MintPlayer/MintPlayer.AspNetCore.ChangePassword/actions/workflows/publish-master.yml)
 [![License](https://img.shields.io/badge/License-Apache%202.0-green.svg)](https://opensource.org/licenses/Apache-2.0)
 
 Most webbrowsers/password managers provide a shortcut to point the user to the page where they can change the password for the specific website.
